@@ -1,3 +1,4 @@
+import os
 import re
 import sys
 import time
@@ -476,7 +477,7 @@ def ip_is_public(ip_str):
 
 
 def get_request_count():
-    return 32
+    return os.cpu_count() * 16
 
 
 def uniq_dict_list(dict_list):
@@ -605,11 +606,11 @@ def get_massdns_path(massdns_dir):
     machine = platform.machine().lower()
     name = f'massdns_{system}_{machine}'
     if system == 'windows':
-        name = name + '.exe'
+        name = f'massdns.exe'
         if machine == 'amd64':
             massdns_dir = massdns_dir.joinpath('windows', 'x64')
         else:
-            massdns_dir = massdns_dir.joinpath('windows', 'x84')
+            massdns_dir = massdns_dir.joinpath('windows', 'x86')
     path = massdns_dir.joinpath(name)
     path.chmod(S_IXUSR)
     if not path.exists():

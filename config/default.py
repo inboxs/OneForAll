@@ -27,12 +27,11 @@ enable_altdns_module = True  # 开启altdns模块,开启会利用置换技术重
 enable_enrich_module = True  # 开启enrich模块，开启会富化出信息，如ip的cdn，cidr，asn，org，addr和isp等信息
 enable_banner_identify = True  # 开启WEB指纹识别模块(默认True)
 enable_takeover_check = False  # 开启子域接管风险检查(默认False)
-# 参数可选值有'small', 'medium', 'large'
-http_request_port = 'small'  # HTTP请求子域(默认'small'，探测80,443端口)
+# 参数可选值有 'small', 'medium', 'large'
+http_request_port = 'small'  # HTTP请求子域(默认 'small'，探测80,443端口)
 # 参数可选值True，False分别表示导出存活，全部子域结果
 result_export_alive = False  # 只导出存活的子域结果(默认False)
-# 参数可选格式有'rst', 'csv', 'tsv', 'json', 'yaml', 'html',
-# 'jira', 'xls', 'xlsx', 'dbf', 'latex', 'ods'
+# 参数可选格式有 'csv', 'json'
 result_save_format = 'csv'  # 子域结果保存文件格式(默认csv)
 # 参数path默认None使用OneForAll结果目录自动生成路径
 result_save_path = None  # 子域结果保存文件路径(默认None)
@@ -42,8 +41,7 @@ save_module_result = False  # 保存各模块发现结果为json文件(默认Fal
 enable_all_module = True  # 启用所有收集模块(默认True)
 enable_partial_module = []  # 启用部分收集模块 必须禁用enable_all_module才能生效
 # 只使用ask和baidu搜索引擎收集子域的示例
-# enable_partial_module = [('modules.search', 'ask')
-#                          ('modules.search', 'baidu')]
+# enable_partial_module = ['modules.search.ask', 'modules.search.baidu']
 module_thread_timeout = 90.0  # 每个收集模块线程超时时间(默认90秒)
 
 # 爆破模块设置
@@ -99,8 +97,8 @@ request_proxy_pool = [{'http': 'http://127.0.0.1:1080',
 
 
 # 请求设置
-request_thread_count = None  # 请求线程数量(默认None，则根据内存大小设置)
-request_timeout_second = (3.05, 27)  # 请求超时秒数(默认connect timout推荐略大于3秒，read秒)
+request_thread_count = None  # 请求线程数量(默认None，则根据情况自动设置)
+request_timeout_second = (3.05, 27)  # 请求超时秒数(默认connect timout推荐略大于3秒)
 request_ssl_verify = False  # 请求SSL验证(默认False)
 request_allow_redirect = True  # 请求允许重定向(默认True)
 request_redirect_limit = 10  # 请求跳转限制(默认10次)
